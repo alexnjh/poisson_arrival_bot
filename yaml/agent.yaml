@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: experiment-agent
+  namespace: default
+  labels:
+    app: experiment-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: experiment-agent
+  template:
+    metadata:
+      labels:
+        app: experiment-agent
+    spec:
+      affinity:
+        nodeAffinity:
+      schedulerName: custom-scheduler
+      containers:
+      - name: experiment-agent
+        image: alexnjh/poisson_arrival_bot:0.0.1
+        resources:
+          limits:
+            memory: "1M"
+          requests:
+            memory: "1M"
