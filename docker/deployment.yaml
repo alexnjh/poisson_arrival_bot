@@ -10,5 +10,8 @@ spec:
       containers:
       - name: sleep
         image: alexnjh/sleep:0.0.1
+        env:
+        - name: MAX_PERIOD
+          value: "300"
       restartPolicy: Never
   backoffLimit: 4

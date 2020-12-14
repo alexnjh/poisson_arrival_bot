@@ -12,7 +12,7 @@ except:
 
 
 v1 = client.BatchV1Api()
-NumOfRequestIn60Mins = 400 # Number of scheduling requests in an hour
+NumOfRequestIn60Mins = 300 # Number of scheduling requests in an hour
 NumOfRequestPerMin   = 60/NumOfRequestIn60Mins
 lamda = 1/NumOfRequestPerMin
 
