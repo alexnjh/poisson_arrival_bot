@@ -11,7 +11,7 @@ except:
     config.load_incluster_config()
 
 
-v1 = client.AppsV1Api()
+v1 = client.BatchV1Api()
 NumOfRequestIn60Mins = 1000 # Number of scheduling requests in an hour
 NumOfRequestPerMin   = 60/NumOfRequestIn60Mins
 lamda = 1/NumOfRequestPerMin
@@ -21,7 +21,7 @@ def create_deployment(namespace, idx):
     with open(path.join(path.dirname(__file__), "deployment.yaml")) as f:
         dep = yaml.safe_load(f)
         dep["metadata"]["name"] = "experiment-job-{}".format(idx)
-        resp = v1.create_namespaced_deployment(body=dep, namespace="default")
+        resp = v1.create_namespaced_job(body=dep, namespace="default")
         print("Deployment created. status='%s'" % str(resp.status))
 
 
