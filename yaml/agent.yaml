@@ -58,8 +58,3 @@ spec:
       containers:
       - name: experiment-agent
         image: alexnjh/poisson_arrival_agent:0.0.1
-        resources:
-          limits:
-            memory: "1M"
-          requests:
-            memory: "1M"
