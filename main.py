@@ -20,7 +20,7 @@ def create_deployment(namespace, idx):
 
     with open(path.join(path.dirname(__file__), "deployment.yaml")) as f:
         dep = yaml.safe_load(f)
-        dep.metadata.name = "experiment-%d".format(idx)
+        dep["metadata"]["name"] = "experiment-%d".format(idx)
         resp = v1.create_namespaced_deployment(body=dep, namespace="default")
         print("Deployment created. status='%s'" % str(resp.status))
 
