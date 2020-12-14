@@ -1,6 +1,7 @@
 import time
 import random
 import yaml
+from os import path
 from kubernetes import client, config
 
 try:
