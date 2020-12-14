@@ -53,7 +53,7 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-      schedulerName: custom-scheduler
+      schedulerName: custom
       serviceAccountName: experiment
       containers:
       - name: experiment-agent
