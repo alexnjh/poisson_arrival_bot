@@ -10,14 +10,9 @@ metadata:
   name: experiment-role
 rules:
 - apiGroups:
-    - ""
     - "apps"
-    - "rbac.authorization.k8s.io"
   resources:
-    - "serviceaccounts"
     - "deployments"
-    - "clusterroles"
-    - "clusterrolebindings"
   verbs:
     - "create"
     - "delete"
