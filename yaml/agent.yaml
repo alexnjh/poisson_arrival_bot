@@ -58,3 +58,4 @@ spec:
       containers:
       - name: experiment-agent
         image: alexnjh/poisson_arrival_agent:0.0.1
+        imagePullPolicy: Always
