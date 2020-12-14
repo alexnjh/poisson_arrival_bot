@@ -10,3 +10,5 @@ spec:
       containers:
       - name: sleep
         image: alexnjh/sleep:0.0.1
+      restartPolicy: Never
+  backoffLimit: 4
