@@ -22,7 +22,7 @@ def create_deployment(namespace, idx):
         dep = yaml.safe_load(f)
         dep["metadata"]["name"] = "experiment-job-{}".format(idx)
         resp = v1.create_namespaced_job(body=dep, namespace="default")
-        print("Deployment created. status='%s'" % str(resp.status))
+        print("Job created. status='%s'" % str(resp.status))
 
 
 def main():
