@@ -3,6 +3,8 @@ kind: Job
 metadata:
   name: experiment-job
   namespace: default
+  annotations:
+    creationTime: ""
 spec:
   template:
     spec:

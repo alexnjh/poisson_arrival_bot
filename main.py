@@ -1,4 +1,5 @@
 import time
+from datetime import datetime, timezone
 import random
 import yaml
 from os import path
@@ -20,7 +21,9 @@ def create_deployment(namespace, idx):
 
     with open(path.join(path.dirname(__file__), "deployment.yaml")) as f:
         dep = yaml.safe_load(f)
+        local_time = datetime.now(timezone.utc).astimezone()
         dep["metadata"]["name"] = "experiment-job-{}".format(idx)
+        dep["metadata"]["annotations"]["creationTime"] = local_time.isoformat()
         resp = v1.create_namespaced_job(body=dep, namespace="default")
         print("Job created. status='%s'" % str(resp.status))
 
