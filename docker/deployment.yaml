@@ -11,7 +11,7 @@ spec:
       schedulerName: custom
       containers:
       - name: sleep
-        image: alexnjh/sleep:0.0.3
+        image: alexnjh/sleep:0.0.5
         env:
         - name: MAX_PERIOD
           value: "300"
