@@ -11,7 +11,7 @@ except:
     # load_kube_config throws if there is no config, but does not document what it throws, so I can't rely on any particular type here
     config.load_incluster_config()
 
-
+# This is the average arrival rate per hour, can be increased using environmental variables
 ARRIVAL_RATE = os.getenv('ARRIVAL_RATE')
 if ARRIVAL_RATE == None
     ARRIVAL_RATE = 200
