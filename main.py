@@ -12,9 +12,14 @@ except:
     config.load_incluster_config()
 
 
+ARRIVAL_RATE = os.getenv('ARRIVAL_RATE')
+if ARRIVAL_RATE == None
+    ARRIVAL_RATE = 200
+
+
+
 v1 = client.BatchV1Api()
-NumOfRequestIn60Mins = 200 # Number of scheduling requests in an hour
-NumOfRequestPerMin   = 60/NumOfRequestIn60Mins
+NumOfRequestPerMin   = 60/int(ARRIVAL_RATE)
 lamda = 1/NumOfRequestPerMin
 
 def create_deployment(namespace, idx):
