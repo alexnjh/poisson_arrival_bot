@@ -13,7 +13,7 @@ except:
 
 # This is the average arrival rate per hour, can be increased using environmental variables
 ARRIVAL_RATE = os.getenv('ARRIVAL_RATE')
-if ARRIVAL_RATE == None
+if ARRIVAL_RATE == None:
     ARRIVAL_RATE = 200
 
 
