@@ -2,6 +2,7 @@ import time
 from datetime import datetime, timezone
 import random
 import yaml
+import os
 from os import path
 from kubernetes import client, config
 
