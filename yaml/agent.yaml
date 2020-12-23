@@ -98,7 +98,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: QUEUE
-          value: "epsilon.distributed"
+          value: "epsilon.shortjob"
         - name: ARRIVAL_RATE
           value: "200"
         - name: MIN_PERIOD

@@ -47,7 +47,7 @@ def create_deployment(namespace, idx):
     with open(path.join(path.dirname(__file__), "deployment.yaml")) as f:
         dep = yaml.safe_load(f)
         local_time = datetime.now(timezone.utc).astimezone()
-        dep["metadata"]["name"] = "{}-experiment-job-{}".format(HOSTNAME,idx)
+        dep["metadata"]["name"] = "{}-job-{}".format(HOSTNAME,idx)
         dep["metadata"]["annotations"]["creationTime"] = local_time.isoformat()
         dep["spec"]["template"]["metadata"]["labels"]["epsilon.queue"] = QUEUE
 
