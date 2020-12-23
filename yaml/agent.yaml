@@ -60,5 +60,48 @@ spec:
         image: alexnjh/poisson_arrival_agent:0.0.1
         imagePullPolicy: Always
         env:
+        - name: QUEUE
+          value: "epsilon.distributed"
         - name: ARRIVAL_RATE
-          value: "500"
+          value: "200"
+        - name: MIN_PERIOD
+          value: "1"
+        - name: MAX_PERIOD
+          value: "300"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: short-job-experiment-agent
+  namespace: default
+  labels:
+    app: short-job-experiment-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: short-job-experiment-agent
+  template:
+    metadata:
+      labels:
+        app: short-job-experiment-agent
+    spec:
+      affinity:
+        nodeAffinity:
+      schedulerName: custom
+      serviceAccountName: experiment
+      containers:
+      - name: short-job-experiment-agent
+        image: alexnjh/poisson_arrival_agent:0.0.1
+        imagePullPolicy: Always
+        env:
+        - name: QUEUE
+          value: "epsilon.distributed"
+        - name: ARRIVAL_RATE
+          value: "200"
+        - name: MIN_PERIOD
+          value: "900"
+        - name: MAX_PERIOD
+          value: "3000"

@@ -19,6 +19,21 @@ if ARRIVAL_RATE == None:
     ARRIVAL_RATE = 200
 
 # This is the average arrival rate per hour, can be increased using environmental variables
+MIN_PERIOD = os.getenv('MIN_PERIOD')
+if MIN_PERIOD == None:
+    MIN_PERIOD = 1
+
+# This is the average arrival rate per hour, can be increased using environmental variables
+MAX_PERIOD = os.getenv('MAX_PERIOD')
+if MAX_PERIOD == None:
+    MAX_PERIOD = 300
+
+# This is the average arrival rate per hour, can be increased using environmental variables
+QUEUE = os.getenv('QUEUE')
+if QUEUE == None:
+    QUEUE = "epsilon.distributed"
+
+# This is the average arrival rate per hour, can be increased using environmental variables
 HOSTNAME = os.getenv('HOSTNAME')
 if HOSTNAME == None:
     HOSTNAME = get_random_string(8)
@@ -34,6 +49,16 @@ def create_deployment(namespace, idx):
         local_time = datetime.now(timezone.utc).astimezone()
         dep["metadata"]["name"] = "{}-experiment-job-{}".format(HOSTNAME,idx)
         dep["metadata"]["annotations"]["creationTime"] = local_time.isoformat()
+        dep["spec"]["template"]["labels"]["epsilon.queue"] = QUEUE
+
+        # Using for loop
+        for i in dep["spec"]["template"]["spec"]["containers"][0]["env"]:
+
+            if i["name"] == "MIN_PERIOD":
+                i["value"] = MIN_PERIOD
+            elif i["name"] == "MAX_PERIOD":
+                i["value"] = MAX_PERIOD
+
         resp = v1.create_namespaced_job(body=dep, namespace="default")
         print("Job created. status='%s'" % str(resp.status))
 

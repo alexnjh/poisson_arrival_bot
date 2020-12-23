@@ -7,6 +7,9 @@ metadata:
     creationTime: ""
 spec:
   template:
+    metadata:
+      labels:
+        epsilon.queue: epsilon.distributed
     spec:
       schedulerName: custom
       containers:
