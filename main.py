@@ -49,7 +49,7 @@ def create_deployment(namespace, idx):
         local_time = datetime.now(timezone.utc).astimezone()
         dep["metadata"]["name"] = "{}-experiment-job-{}".format(HOSTNAME,idx)
         dep["metadata"]["annotations"]["creationTime"] = local_time.isoformat()
-        dep["spec"]["template"]["labels"]["epsilon.queue"] = QUEUE
+        dep["spec"]["template"]["metadata"]["labels"]["epsilon.queue"] = QUEUE
 
         # Using for loop
         for i in dep["spec"]["template"]["spec"]["containers"][0]["env"]:
