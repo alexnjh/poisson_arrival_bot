@@ -65,9 +65,9 @@ spec:
         - name: ARRIVAL_RATE
           value: "200"
         - name: MIN_PERIOD
-          value: "1"
+          value: "900"
         - name: MAX_PERIOD
-          value: "300"
+          value: "1800"
 
 ---
 
@@ -102,6 +102,6 @@ spec:
         - name: ARRIVAL_RATE
           value: "200"
         - name: MIN_PERIOD
-          value: "900"
+          value: "1"
         - name: MAX_PERIOD
-          value: "3000"
+          value: "300"
